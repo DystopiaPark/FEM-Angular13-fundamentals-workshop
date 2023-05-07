@@ -38,7 +38,7 @@ export class CoursesComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectCourse(course) {
+  selectCourse(course: object) {
     this.selectedCourse = course;
   }
 }
