@@ -32,8 +32,13 @@ export class CoursesComponent implements OnInit {
       favorite: true,
     },
   ];
+  selectedCourse = null;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  selectCourse(course) {
+    this.selectedCourse = course;
+  }
 }
