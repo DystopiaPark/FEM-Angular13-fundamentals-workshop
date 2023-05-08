@@ -60,6 +60,25 @@
               type="text"
             />
           </mat-form-field>
+          <section class="full-width">
+            <mat-slider
+              min="0"
+              max="100"
+              step="0.5"
+              [(ngModel)]="selectedCourse.percentComplete"
+              thumbLabel
+              name="percentComplete"
+            >
+            </mat-slider>
+          </section>
+          <br />
+          <mat-checkbox
+            class="example-margin"
+            [(ngModel)]="selectedCourse.favorite"
+            name="favorite"
+            >Favorite?</mat-checkbox
+          >
+
           <!-- COURSE FORM -->
         </mat-card-content>
         <mat-card-actions>
