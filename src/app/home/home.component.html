@@ -6,12 +6,13 @@
     <mat-list>
       <mat-list-item
         *ngFor="let lesson of courseLessons"
-        (click)="handleLesson(lesson)"
+        (click)="selectLesson(lesson)"
       >
-        {{ lesson.title }}</mat-list-item
-      >
+        <h3 matLine>{{ lesson.title | titlecase }}</h3>
+      </mat-list-item>
+      <hr />
+      <pre>{{ selectedLesson | json }}</pre>
+      <!-- LESSON LIST -->
     </mat-list>
-    {{ currentLesson | json }}
-    <!-- LESSON LIST -->
   </mat-card-content>
 </mat-card>

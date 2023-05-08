@@ -16,13 +16,13 @@ export class HomeComponent implements OnInit {
     { title: 'Angular Routing' },
     { title: 'Unit Testing Fundamentals' },
   ];
-  currentLesson = null;
+  selectedLesson = null;
 
   constructor() {}
 
   ngOnInit() {}
 
-  handleLesson(lesson) {
-    this.currentLesson = lesson;
+  selectLesson(lesson) {
+    this.selectedLesson = lesson;
   }
 }
