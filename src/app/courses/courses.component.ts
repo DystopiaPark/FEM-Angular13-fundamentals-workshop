@@ -25,10 +25,10 @@ export class CoursesComponent implements OnInit {
       favorite: true,
     },
     {
-      id: 1,
-      title: 'Angular 13 Fundamentals',
-      description: 'Learn the fundamentals of Angular 13',
-      percentComplete: 26,
+      id: 3,
+      title: 'React',
+      description: 'Learn the fundamentals of React',
+      percentComplete: 30,
       favorite: true,
     },
   ];
@@ -40,5 +40,9 @@ export class CoursesComponent implements OnInit {
 
   selectCourse(course: object) {
     this.selectedCourse = course;
+  }
+
+  deleteCourse(courseId: number) {
+    console.log('Delete COURSE', courseId);
   }
 }
