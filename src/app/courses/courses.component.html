@@ -40,16 +40,36 @@
           <ng-template #elseBlock>Select a Course</ng-template>
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content>
-        <pre>{{ selectedCourse | json }}</pre>
-        <!-- COURSE FORM -->
-      </mat-card-content>
-      <mat-card-actions>
-        <!-- COURSE ACTIONS -->
-        <button type="button" mat-button (click)="selectCourse(null)">
-          Cancel
-        </button>
-      </mat-card-actions>
+      <form #form="ngForm">
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Title"
+              [(ngModel)]="selectedCourse.title"
+              name="title"
+              type="text"
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Description"
+              [(ngModel)]="selectedCourse.description"
+              name="description"
+              type="text"
+            />
+          </mat-form-field>
+          <!-- COURSE FORM -->
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- COURSE ACTIONS -->
+          <button type="button" mat-button (click)="reset()">Cancel</button>
+        </mat-card-actions>
+      </form>
+      <hr />
+      <pre>{{ form.value | json }}</pre>
+      <pre>{{ form.valid | json }}</pre>
     </mat-card>
   </div>
 </div>

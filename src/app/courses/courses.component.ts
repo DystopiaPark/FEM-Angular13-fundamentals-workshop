@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from '../common/models/course';
+
+const emptyCourse: Course = {
+  id: null,
+  title: '',
+  description: '',
+  percentComplete: 0,
+  favorite: false,
+};
 
 @Component({
   selector: 'app-courses',
@@ -32,7 +41,7 @@ export class CoursesComponent implements OnInit {
       favorite: true,
     },
   ];
-  selectedCourse = null;
+  selectedCourse = emptyCourse;
 
   constructor() {}
 
@@ -44,5 +53,9 @@ export class CoursesComponent implements OnInit {
 
   deleteCourse(courseId: number) {
     console.log('Delete COURSE', courseId);
+  }
+
+  reset() {
+    this.selectCourse({ ...emptyCourse });
   }
 }
