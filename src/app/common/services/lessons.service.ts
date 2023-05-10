@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,4 +15,6 @@ export class LessonsService {
     { title: 'Angular Routing' },
     { title: 'Unit Testing Fundamentals' },
   ];
+
+  lessons$ = from(this.lessons);
 }
