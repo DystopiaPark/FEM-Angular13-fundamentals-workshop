@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../common/models/course';
+import { CoursesService } from '../common/services/courses.service';
 
 const emptyCourse: Course = {
   id: null,
@@ -18,37 +19,23 @@ export class CoursesComponent implements OnInit {
   // 1. Render courses in a list
   // 2. Select a course
   // 3. Render selected course
-  courses = [
-    {
-      id: 1,
-      title: 'Angular 13 Fundamentals',
-      description: 'Learn the fundamentals of Angular 13',
-      percentComplete: 5,
-      favorite: true,
-    },
-    {
-      id: 2,
-      title: 'JavaScript The HARDEST PARTS EVER!',
-      description: 'Learn the Javascript like a pro! with Will',
-      percentComplete: 42,
-      favorite: false,
-    },
-    {
-      id: 3,
-      title: 'React',
-      description: 'Learn the fundamentals of React',
-      percentComplete: 88,
-      favorite: true,
-    },
-  ];
+  courses = [];
   selectedCourse = emptyCourse;
+  originalTitle = '';
 
-  constructor() {}
+  constructor(private coursesService: CoursesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.courses = this.coursesService.courses;
+  }
 
   selectCourse(course) {
-    this.selectedCourse = course;
+    this.selectedCourse = { ...course };
+    this.originalTitle = course.title;
+  } // mutable, not shared
+
+  saveCourse(course) {
+    console.log('SAVE COURSE', course);
   }
 
   deleteCourse(courseId: number) {

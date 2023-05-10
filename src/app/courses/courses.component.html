@@ -35,12 +35,12 @@
       <mat-card-header>
         <mat-card-title>
           <span *ngIf="selectedCourse?.id; else elseBlock">
-            {{ selectedCourse.title | titlecase }}
+            {{ originalTitle | titlecase }}
           </span>
           <ng-template #elseBlock>Select a Course</ng-template>
         </mat-card-title>
       </mat-card-header>
-      <form #form="ngForm">
+      <form #form="ngForm" (submit)="saveCourse(selectedCourse)">
         <mat-card-content>
           <mat-form-field class="full-width">
             <input
@@ -48,41 +48,45 @@
               placeholder="Title"
               [(ngModel)]="selectedCourse.title"
               name="title"
+              required
               type="text"
             />
           </mat-form-field>
           <mat-form-field class="full-width">
-            <input
+            <textarea
               matInput
               placeholder="Description"
               [(ngModel)]="selectedCourse.description"
               name="description"
               type="text"
-            />
+            ></textarea>
           </mat-form-field>
           <section class="full-width">
+            <h4>{{ selectedCourse.percentComplete }}% Complete</h4>
             <mat-slider
+              class="full-width"
               min="0"
               max="100"
-              step="0.5"
-              [(ngModel)]="selectedCourse.percentComplete"
               thumbLabel
               name="percentComplete"
-            >
-            </mat-slider>
+              [(ngModel)]="selectedCourse.percentComplete"
+            ></mat-slider>
           </section>
-          <br />
-          <mat-checkbox
-            class="example-margin"
-            [(ngModel)]="selectedCourse.favorite"
-            name="favorite"
-            >Favorite?</mat-checkbox
-          >
-
-          <!-- COURSE FORM -->
+          <section>
+            <mat-checkbox [(ngModel)]="selectedCourse.favorite" name="favorite">
+              Favorite
+            </mat-checkbox>
+          </section>
         </mat-card-content>
         <mat-card-actions>
-          <!-- COURSE ACTIONS -->
+          <button
+            type="submit"
+            [disabled]="form.invalid"
+            mat-button
+            color="primary"
+          >
+            Save
+          </button>
           <button type="button" mat-button (click)="reset()">Cancel</button>
         </mat-card-actions>
       </form>
