@@ -26,7 +26,7 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService) {}
 
   ngOnInit(): void {
-    this.courses = this.coursesService.courses;
+    this.fetchCourses();
   }
 
   selectCourse(course) {
@@ -34,8 +34,28 @@ export class CoursesComponent implements OnInit {
     this.originalTitle = course.title;
   } // mutable, not shared
 
+  fetchCourses() {
+    this.coursesService
+      .all()
+      .subscribe((result: any) => (this.courses = result));
+  }
+
   saveCourse(course) {
-    console.log('SAVE COURSE', course);
+    if (course.id) {
+      this.updateCourse(course);
+    } else {
+      this.createCourse(course);
+    }
+  }
+  createCourse(course) {
+    this.coursesService
+      .create(course)
+      .subscribe((result) => this.fetchCourses());
+  }
+  updateCourse(course) {
+    this.coursesService
+      .update(course)
+      .subscribe((result) => this.fetchCourses());
   }
 
   deleteCourse(courseId: number) {
