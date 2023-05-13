@@ -30,8 +30,7 @@ export class CoursesComponent implements OnInit {
   }
 
   selectCourse(course) {
-    this.selectedCourse = { ...course };
-    this.originalTitle = course.title;
+    this.selectedCourse = course;
   } // mutable, not shared
 
   fetchCourses() {
