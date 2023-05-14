@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../common/models/course';
 import { CoursesService } from '../common/services/courses.service';
+import { Observable } from 'rxjs';
 
 const emptyCourse: Course = {
   id: null,
@@ -20,6 +21,7 @@ export class CoursesComponent implements OnInit {
   // 2. Select a course
   // 3. Render selected course
   courses = [];
+  courses$: any;
   selectedCourse = emptyCourse;
   originalTitle = '';
 
@@ -34,6 +36,7 @@ export class CoursesComponent implements OnInit {
   } // mutable, not shared
 
   fetchCourses() {
+    // this.courses$ = this.coursesService.all();
     this.coursesService
       .all()
       .subscribe((result: any) => (this.courses = result));
@@ -58,7 +61,9 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(courseId: number) {
-    console.log('Delete COURSE', courseId);
+    this.coursesService
+    .delete(courseId)
+    .subscribe((result) => this.fetchCourses())
   }
 
   reset() {

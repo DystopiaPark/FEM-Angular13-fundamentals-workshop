@@ -9,24 +9,10 @@
     },
     {
       "id": 2,
-      "title": "aaaa",
+      "title": "aaaabbbbbbbbbbbb",
       "description": "aaaa",
       "percentComplete": 17,
       "favorite": true
-    },
-    {
-      "id": 3,
-      "title": "aaaaaaaaaanbaaaaaa",
-      "description": "bbb",
-      "percentComplete": 0,
-      "favorite": false
-    },
-    {
-      "id": 4,
-      "title": "bbbbbbbb",
-      "description": "",
-      "percentComplete": 0,
-      "favorite": false
     }
   ]
 }
