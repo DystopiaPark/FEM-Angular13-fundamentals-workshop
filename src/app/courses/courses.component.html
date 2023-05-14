@@ -1,5 +1,5 @@
 <div class="courses-containers">
-  <div class="course-details">
+  <div class="courses-list">
     <app-courses-list
       [courses]="courses"
       (selected)="selectCourse($event)"
@@ -9,8 +9,7 @@
 
   <div class="course-details">
     <app-course-details
-      [course
-      ]="selectedCourse"
+      [course]="selectedCourse"
       (cancelled)="reset()"
       (saved)="saveCourse($event)"
     ></app-course-details>
